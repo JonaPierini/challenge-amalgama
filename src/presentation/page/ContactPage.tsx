@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ContactsScreenProps } from "../../infrastructure/interfaces";
-import { ContactCard } from "../components/ContactCard";
 
 export const ContactPage = ({
   contacts,
@@ -19,8 +18,8 @@ export const ContactPage = ({
       line_1: address.line_1,
       line_2: address.line_2,
       zip_code: address.zip_code,
-      city: "",
-      state: "",
+      city: cities,
+      state: states,
     })),
   }));
 
@@ -28,10 +27,10 @@ export const ContactPage = ({
     <div>
       <h1>Contacts 👥</h1>
       {contactsToDisplay.map((contact) => (
-        <>
+        <div key={contact.id}>
           <h3>{contact.full_name}</h3>
           <Link to={`/contacts/${contact.id}`}>View Profile</Link>
-        </>
+        </div>
       ))}
     </div>
   );
